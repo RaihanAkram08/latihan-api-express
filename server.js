@@ -3,6 +3,7 @@ const { addProductAction, getAllProductAction, getProductByIdAction, updateProdu
 const { addEmployeeAction, getAllEmployeeAction, getEmployeeByIdAction, updateEmployeeAction, deleteEmployeeAction } = require('./actions/employee-action');
 const { addBookAction, getAllBookAction, getBookByIdAction, updateBookAction, deleteBookAction } = require('./actions/book-action');
 const { addUserAction, getAllUserAction, getUserByIdAction, updateUserAction, deleteUserAction } = require('./actions/user-action');
+const { addOrderAction, getAllOrderAction, getOrderByIdAction, updateOrderAction, deleteOrderAction } = require('./actions/order-action');
 
 const app = express();
 app.use(express.json());
@@ -34,6 +35,13 @@ app.get('/api/users', getAllUserAction);  // READ
 app.get('/api/users/:user_id', getUserByIdAction); // READ by ID
 app.put('/api/users/:user_id', updateUserAction); // UPDATE
 app.delete('/api/users/:user_id', deleteUserAction); // DELETE
+
+// API Orders
+app.post('/api/orders', addOrderAction); // CREATE
+app.get('/api/orders', getAllOrderAction);  // READ
+app.get('/api/orders/:order_id', getOrderByIdAction); // READ by ID
+app.put('/api/orders/:order_id', updateOrderAction); // UPDATE
+app.delete('/api/orders/:order_id', deleteOrderAction); // DELETE
 
 // Jalankan server
 app.listen(3000, () => {
